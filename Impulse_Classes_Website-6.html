@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impulse Classes</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif;scroll-behavior:smooth}
+body{background:#f5f7fb;color:#172033}
+nav{position:sticky;top:0;z-index:10;background:#101827;color:#fff;padding:16px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:800}.logo span{color:#38bdf8}
+nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:14px}
+.hero{min-height:86vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;background:linear-gradient(135deg,#0f172a,#2563eb)}
+.hero h1{font-size:clamp(38px,7vw,64px);margin-bottom:15px}.hero span{color:#38bdf8}
+.hero p{font-size:20px;margin-bottom:28px}.btn{display:inline-block;background:#38bdf8;color:#07111f;padding:13px 23px;border-radius:8px;text-decoration:none;font-weight:bold;margin:5px}
+section{padding:70px 8%}.title{text-align:center;font-size:35px;margin-bottom:35px}
+.about{text-align:center;background:#fff}.about p{max-width:750px;margin:auto;line-height:1.8;font-size:17px}
+.grid{display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
+.card{background:#fff;width:280px;padding:28px;border-radius:15px;text-align:center;box-shadow:0 6px 22px #0001;transition:.25s}
+.card:hover{transform:translateY(-6px)}.card h3{color:#2563eb;margin-bottom:12px}
+.teachers{background:#fff}.teacher{width:260px}.icon{font-size:52px;margin-bottom:12px}
+.results{text-align:center}.resultbox{max-width:750px;margin:auto;background:#fff;padding:32px;border-radius:15px;box-shadow:0 6px 22px #0001}
+.contact{background:#101827;color:#fff;text-align:center}.contact .title{color:#fff}.contact p{margin:9px}
+.whatsapp{display:inline-block;margin-top:18px;background:#22c55e;color:#fff;text-decoration:none;padding:14px 26px;border-radius:8px;font-weight:bold}
+footer{background:#020617;color:#fff;text-align:center;padding:20px}
+@media(max-width:700px){nav{flex-direction:column;gap:12px}nav a{margin:4px;font-size:12px}.hero{min-height:78vh}section{padding:55px 5%}}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">Impulse <span>Classes</span></div>
+<div>
+<a href="#home">Home</a><a href="#about">About</a><a href="#courses">Courses</a><a href="#teachers">Teachers</a><a href="#results">Results</a><a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero" id="home">
+<div>
+<h1>Welcome to <span>Impulse Classes</span></h1>
+<p>Learn Today • Lead Tomorrow 🚀</p>
+<a class="btn" href="#courses">Explore Courses</a>
+<a class="btn" href="#contact">Contact Us</a>
+</div>
+</section>
+
+<section class="about" id="about">
+<h2 class="title">About Impulse Classes</h2>
+<p>Impulse Classes provides quality education with experienced educators, regular practice, doubt support and a student-focused learning environment.</p>
+</section>
+
+<section id="courses">
+<h2 class="title">Our Courses</h2>
+<div class="grid">
+<div class="card"><h3>Class 11</h3><p>Physics • Chemistry • Mathematics • Biology</p></div>
+<div class="card"><h3>Class 12</h3><p>Board + Competitive Exam Preparation</p></div>
+<div class="card"><h3>JEE Preparation</h3><p>Concept Building + Practice + Test Series</p></div>
+<div class="card"><h3>NEET Preparation</h3><p>Physics, Chemistry & Biology Preparation</p></div>
+</div>
+</section>
+
+<section class="teachers" id="teachers">
+<h2 class="title">Our Educators</h2>
+<div class="grid">
+<div class="card teacher"><div class="icon">👨‍🏫</div><h3>B.K. Pandey Sir</h3><p>Physics & Mathematics Educator</p></div>
+<div class="card teacher"><div class="icon">👨‍🏫</div><h3>A.P. Pandey Sir</h3><p>Chemistry Educator</p></div>
+<div class="card teacher"><div class="icon">👨‍🏫</div><h3>M.K. Gautam Sir</h3><p>Biology Educator</p></div>
+</div>
+</section>
+
+<section class="results" id="results">
+<h2 class="title">Our Results</h2>
+<div class="resultbox"><h2>Excellent Results 🎯</h2><br><p>Regular classes, tests and expert guidance to help students achieve their goals.</p></div>
+</section>
+
+<section class="contact" id="contact">
+<h2 class="title">Contact Impulse Classes</h2>
+<p>📞 Call us for Admission</p><p>📍 Your Coaching Address Here</p><p>🕐 Admissions Open</p>
+<a class="whatsapp" href="https://wa.me/919999999999" target="_blank">💬 WhatsApp Us</a>
+</section>
+
+<footer>© 2026 Impulse Classes | All Rights Reserved</footer>
+</body>
+</html>
