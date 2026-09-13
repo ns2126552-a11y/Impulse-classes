@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VideoHub</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f0f0f;color:white}
+header{height:65px;background:#181818;display:flex;align-items:center;justify-content:space-between;padding:0 20px;position:sticky;top:0;z-index:10}
+.logo{font-size:25px;font-weight:bold}.logo span{color:#ff1744}
+.search{width:40%;display:flex}.search input{width:100%;padding:12px 16px;border-radius:25px;border:1px solid #444;background:#252525;color:white;outline:none}
+.upload-btn{background:#ff1744;color:white;border:0;padding:11px 18px;border-radius:22px;cursor:pointer;font-weight:bold}
+.container{padding:25px;max-width:1200px;margin:auto}
+.hero{background:linear-gradient(135deg,#241018,#171717);padding:35px;border-radius:20px;margin-bottom:30px}
+.hero h1{font-size:35px;margin-bottom:10px}.hero p{color:#bbb;margin-bottom:20px}
+.upload-box{background:#191919;border:2px dashed #444;border-radius:18px;padding:30px;text-align:center;margin-bottom:35px}
+.upload-box h2{margin-bottom:10px}#videoInput{display:none}
+.choose{display:inline-block;margin-top:15px;padding:13px 25px;background:#ff1744;border-radius:25px;cursor:pointer;font-weight:bold}
+#videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.card{background:#181818;border-radius:15px;overflow:hidden;box-shadow:0 5px 20px #0005}
+.card video{width:100%;height:190px;object-fit:cover;background:#000}
+.info{padding:15px}.info h3{margin-bottom:7px}.info p{color:#999;font-size:14px}
+.delete{margin-top:12px;background:#333;color:white;border:0;padding:8px 13px;border-radius:8px;cursor:pointer}
+.empty{text-align:center;color:#777;padding:30px}
+@media(max-width:600px){header{padding:0 12px}.search{display:none}.logo{font-size:21px}.container{padding:15px}.hero{padding:25px 20px}.hero h1{font-size:28px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">Video<span>Hub</span></div>
+<div class="search"><input type="text" id="search" placeholder="Search videos..."></div>
+<button class="upload-btn" onclick="document.getElementById('videoInput').click()">+ Upload</button>
+</header>
+<div class="container">
+<section class="hero">
+<h1>Share Your Videos 🎬</h1>
+<p>Upload and watch your favorite videos in one place.</p>
+<button class="upload-btn" onclick="document.getElementById('videoInput').click()">Upload Video</button>
+</section>
+<div class="upload-box">
+<h2>Upload Your Video</h2>
+<p>Select a video from your phone or computer</p>
+<label class="choose" for="videoInput">Choose Video</label>
+<input type="file" id="videoInput" accept="video/*">
+</div>
+<h2 style="margin-bottom:20px;">Latest Videos</h2>
+<div id="videos"><div class="empty">No videos uploaded yet.</div></div>
+</div>
+<script>
+const input=document.getElementById("videoInput"),videos=document.getElementById("videos"),search=document.getElementById("search");
+let videoList=[];
+input.addEventListener("change",function(){
+ const file=this.files[0]; if(!file)return;
+ if(!file.type.startsWith("video/")){alert("Please select a video file.");return;}
+ videoList.unshift({name:file.name,url:URL.createObjectURL(file),size:(file.size/(1024*1024)).toFixed(1)});
+ renderVideos(); this.value="";
+});
+function renderVideos(){
+ const query=search.value.toLowerCase();
+ const filtered=videoList.filter(v=>v.name.toLowerCase().includes(query));
+ videos.innerHTML="";
+ if(!filtered.length){videos.innerHTML='<div class="empty">No videos found.</div>';return;}
+ filtered.forEach((v,index)=>{
+  const card=document.createElement("div"); card.className="card";
+  card.innerHTML=`<video controls preload="metadata"><source src="${v.url}" type="${v.type||'video/mp4'}">Your browser does not support video.</video><div class="info"><h3>${v.name}</h3><p>Video • ${v.size} MB</p><button class="delete" onclick="deleteVideo(${index})">Delete</button></div>`;
+  videos.appendChild(card);
+ });
+}
+function deleteVideo(index){const video=videoList[index];URL.revokeObjectURL(video.url);videoList.splice(index,1);renderVideos();}
+search.addEventListener("input",renderVideos);
+</script>
+</body>
+</html>
